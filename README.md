@@ -1,5 +1,4 @@
-# COVID19 - EvoCyclone version 1.0. 
-
+# COVID19 - EvoCyclone
 Respirateur artificiel permettant 10 à 30 cycles par minute. 
 
 
@@ -21,7 +20,7 @@ Le premier problème dans tous les projets est la situation de confinement. Il e
 C'est pourquoi nous nous sommes basés sur un appareil à réaliser à partir des matériaux à disposition. Ici, pignon et chaine de vélo, moteur d'essuie-glace de voiture et l'unité alimentant en 12V.
 Ce développement permet l'ajout d'un capteur cardiaque, d'un capteur de pression et d'autres appareils de précision.  Ce qu'il fait et comment nous l'avons construit. Le principe est basé sur un appareil simple et robuste avec comme principe une élution à partir d'un minimum de matériaux. 
 
-## EvoCyclo base :
+## Vérsion Basic EvoCyclo  :
 -	2 x pignons de vélo
 -	4 x roue de patins à roulettes ou roller : Permet d’éviter les frictions sur la ballon et évite que celui-ci soit endommagé pendant un temps d’utilisation long. 
 -	1 x chaines de vélo
@@ -38,7 +37,7 @@ Exemple : https://www.amazon.com/Comimark-VNH2SP30-Stepper-Monster-Replace/dp/B0
 -	En option, 1 capteur IR pour la détection d’arrêt inopiné du moteur ou « forçage » anormal de celui-ci. (Pas intégrée, mais possible de l’ajouter). 
 
 
-## Evolution Connected : 
+## Version Connected : 
 Évolution vers une version connectée en Wifi avec détection l’absence du ballon, alarme et pilotage à distance.  
 -	 1 x OrangePIZero + (GPIO ARM 1Ghz) (pince à 700Mhz) 512Mbram. Ou RassberyPI
 -	 1 x LCD ex : 16/20x4 … 
@@ -61,7 +60,10 @@ Resistancecovid, nous sommes un groupe de passionnés d'informatique de diverses
 - [Softwares](evocyclone-softwares/README.md)
 
 ## Authors : 
+- Saïd Deraoui
+- Thierry Morea
 
-## Remerciements :
-
-## Références et liens : 
+## Contributor
+- Vapula
+- Owerach
+- Kryogenyx
