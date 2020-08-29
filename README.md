@@ -1,4 +1,4 @@
-==Resistancecovid, we are a group of IT enthusiasts from various parts of Europe. We are actively working on the implementation of 3D printing protocols to meet the present and future needs of the nursing staff in front of the Covid-19.
+==Resistancecovid==, we are a group of IT enthusiasts from various parts of Europe. We are actively working on the implementation of 3D printing protocols to meet the present and future needs of the nursing staff in front of the Covid-19.
 
 EvoCyclone version 1.0. Artificial respirator allowing 10 to 30 cycles per minute. The first problem in all of the projects is the containment situation. It is complicated to reproduce the current GPL projects.
 
