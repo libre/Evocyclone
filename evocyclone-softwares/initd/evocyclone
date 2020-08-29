@@ -1,0 +1,105 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          webservice
+#            :
+#      Author : Deraoui Said     <said.deraoui@childdefense.eu>
+#    Purpose :
+# Parameters : --help
+#                      : --version
+#         
+#      Notes : See --help for details
+#==========================================================================
+
+# Do NOT "set -e"
+
+# PATH should only include /usr/* if it runs after the mountnfs.sh script
+PATH=/sbin:/usr/sbin:/bin:/usr/bin
+DESC="EvoCyclone Web Daemon service"
+NAME=evocyclone-web.sh
+DAEMON=/opt/evocyclone/evocyclone-web.sh
+DAEMON_ARGS=" -ip 172.22.13.221 -port 81 -log /var/log/evo-motordrive.log -webroot /opt/evocyclone/web"
+LLOG="/var/log/evo-motordrive.log"
+PIDFILE=/tmp/web.pid
+SCRIPTNAME=/etc/init.d/evocyclone
+SCREEID='"WebService"'
+SCREEN="/usr/bin/screen"
+SCREENARG=" -S $SCREEID -d -m "
+
+
+# Exit if the package is not installed
+[ -x "$DAEMON" ] || exit 0
+
+#
+# Function that starts the daemon/service
+#
+do_start() {
+        echo "Service Starting" >> $LLOG
+		# Préparation access tty pour screen
+        chmod +rw $(tty)
+        chmod 766 $(tty)
+		# Access Log 
+		chmod 755 /var/log/messages
+		chmod 755 /var/log/syslog
+		chmod 755 /var/log/kern.log
+		chmod 755 /var/log/auth.log		
+		# Access Log RW
+		chmod 777 /tmp/webservice.log
+		sudo chmod u+s `which ping`
+        #su -c "$SCREEN $SCREENARG $DAEMON $DAEMON_ARGS" devwebservice &
+        screen -S "WebService" -d -m $DAEMON  $DAEMON_ARGS
+		screen -S "LcdService" -d -m /opt/evocyclone/evocyclone-ldcd.sh --log /var/log/evo-motordrive.log --debug 1
+		screen -S "MotorService" -d -m /usr/sbin/evocyclone-motord.sh --log /var/log/evo-motordrive.log --debug 1
+        echo "Service WebService Started" >> $LLOG
+}
+
+#
+# Function that stops the daemon/service
+#
+do_stop() {
+	# Return
+	echo "STOP" > /tmp/web.pid
+	echo "STOP" > /tmp/lcd.pid	
+	echo "STOP" > /tmp/evo-motordrive.pid	
+	sleep 5
+	screen -S "WebService" -X quit
+	screen -S "LcdService" -X quit
+	screen -S "MotorService" -X quit	
+	echo "Send Stop by PID to Service Web" >> $LLOG
+}
+
+#
+# Function that sends a SIGHUP to the daemon/service
+#
+do_reload() {
+	# Return
+	echo "RELOAD" > /tmp/web.pid
+	echo "RELOAD" > /tmp/lcd.pid
+	echo "RELOAD" >  /tmp/evo-motordrive.pid
+	sleep 5	
+	echo "Send Relaod Config by PID to Service Web" >> $LLOG
+}
+
+case "$1" in
+  start)
+		echo "EvoCyclone Starting 			[Wait]"
+		do_start
+		echo "EvoCyclone Starting 			[OK]"
+    ;;
+  stop)
+		echo "EvoCyclone Stopping			[Wait]"	
+		do_stop
+		echo "EvoCyclone Stopped 			[OK]"
+    ;;
+  reload)
+    	do_reload
+		echo "EvoCyclone Reload 			[OK]"
+	;;
+  retart)
+		echo "EvoCyclone Restarting 		[Wait]"	
+    	do_stop
+		do_start
+	echo "EvoCyclone Restarting 			[Ok]"	
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|reload|restart}"
+esac
