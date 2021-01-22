@@ -5,9 +5,8 @@ Respirateur artificiel permettant 10 à 30 cycles par minute.
 [![Intro video](https://raw.githubusercontent.com/libre/evocyclone/master/docs/images/evocylone-demovideo.png)](https://youtu.be/QGe1vSHL8Ds)
 
 ![Home Evo Photo](https://raw.githubusercontent.com/libre/evocyclone/master/docs/images/evocylone-software.png)
-![Home Evo Photo](https://raw.githubusercontent.com/libre/evocyclone/master/docs/images/evocyclone-g1.jpg)
 ![Home Evo Photo](https://raw.githubusercontent.com/libre/evocyclone/master/docs/images/evocyclone-g2.jpg)
-![Home Evo Photo](https://raw.githubusercontent.com/libre/evocyclone/master/docs/images/evocyclone-g3.jpg)
+
 
 -	**Lowtech**
 -	**Lowdiy**
@@ -52,7 +51,8 @@ Resistancecovid, nous sommes un groupe de passionnés d'informatique de diverses
 -	Tenue opérationnelle pendant 3 jours nonstops sans endommager le ballon.  
 -	Détection absence de ballon et permet un remplacement rapide et sans que la machine soit manipulée. 
 -	Testée et validée avec deux modèles de ballon (Français et Belge adulte). 
-
+![Home Evo Photo](https://raw.githubusercontent.com/libre/evocyclone/master/docs/images/evocyclone-g1.jpg)
+![Home Evo Photo](https://raw.githubusercontent.com/libre/evocyclone/master/docs/images/evocyclone-g3.jpg)
 ## Section projet : 
 
 - [Plan](evocyclone-plan/README.md)
